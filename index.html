@@ -544,17 +544,27 @@ footer p{font-family:var(--dm);font-size:11px;color:var(--muted);letter-spacing:
       <div class="card-open-hint">click to open IDE</div>
     </div>
 
+    <div class="swap-card" id="sc5" onclick="openModal(6)">
+      <div class="card-tag">Full Stack / SaaS / AI</div>
+      <div class="card-title">PassPlus<br>Exam Prep Platform</div>
+      <div class="card-desc">Built and launched a full stack Security+ SY0-701 exam prep platform with AI-powered answer explanations, Stripe payments, and GA4 analytics. Acquired 34 users across 6 countries within 24 hours of launch with zero ad spend.</div>
+      <div class="card-techs"><span class="card-tech">Next.js</span><span class="card-tech">TypeScript</span><span class="card-tech">Tailwind CSS</span><span class="card-tech">Vercel</span><span class="card-tech">Stripe</span><span class="card-tech">Anthropic API</span></div>
+      <a href="https://studypassplus.com" class="card-link" target="_blank" onclick="event.stopPropagation()">Live Site</a>
+      <div class="card-open-hint">click to expand</div>
+    </div>
+
     <div class="card-nav">
-      <button class="card-nav-btn" onclick="goCard((currentCard - 1 + 5) % 5)">
+      <button class="card-nav-btn" onclick="goCard((currentCard - 1 + 6) % 6)">
         <span class="card-nav-arrow">←</span>
       </button>
-      <button class="card-nav-btn card-nav-next" onclick="goCard((currentCard + 1) % 5)">
+      <button class="card-nav-btn card-nav-next" onclick="goCard((currentCard + 1) % 6)">
         <span class="card-nav-label">NEXT</span>
         <span class="card-nav-arrow">→</span>
-        <span class="card-nav-counter" id="cardCounter">02 / 05</span>
+        <span class="card-nav-counter" id="cardCounter">02 / 06</span>
       </button>
       <div style="display:flex;gap:6px;margin-left:8px;">
         <div class="card-pip active"></div>
+        <div class="card-pip"></div>
         <div class="card-pip"></div>
         <div class="card-pip"></div>
         <div class="card-pip"></div>
@@ -1173,6 +1183,53 @@ server.serve_forever()`
     },
     code: null,
     isIDE: true
+  },
+  {
+    id: 6,
+    title: 'PassPlus — Security+ Exam Prep Platform',
+    tag: 'Full Stack / SaaS / AI',
+    tabs: ['overview','architecture'],
+    overview: {
+      desc: 'Built and launched a full stack Security+ SY0-701 exam prep platform featuring AI-powered answer explanations via the Anthropic API, Stripe payment integration, and GA4 analytics. Acquired 34 users across 6 countries within 24 hours of launch with zero ad spend.',
+      bullets: [
+        'Built with <strong>Next.js + TypeScript</strong> and deployed on Vercel — full SSR/SSG pipeline with optimized cold-start performance',
+        'Integrated <strong>Anthropic API</strong> to generate contextual explanations for every practice question answer',
+        'Implemented <strong>Stripe Checkout</strong> for one-time purchase and subscription flows with webhook-based access provisioning',
+        'Wired <strong>GA4 analytics</strong> with custom events — tracked funnel from landing page through checkout to first practice session',
+        'Reached <strong>34 users across 6 countries</strong> within 24 hours of launch through organic distribution only',
+        'Zero ad spend — growth driven entirely by community sharing and SEO-optimized landing page',
+      ],
+      tech: ['Next.js','TypeScript','Tailwind CSS','Vercel','Stripe','Anthropic API','GA4','React'],
+      metrics: [
+        {num:'34', label:'Users in first\n24 hours'},
+        {num:'6', label:'Countries reached\nat launch'},
+        {num:'$0', label:'Ad spend —\npure organic growth'},
+      ]
+    },
+    arch: {
+      sections: [
+        {
+          label: 'System Architecture',
+          rows: [
+            ['User','→','Next.js Frontend (Vercel)','→','Practice Questions + UI'],
+            ['Answer submission','→','API Route','→','Anthropic API → AI explanation'],
+            ['Checkout flow','→','Stripe Checkout','→','Webhook → access provisioning'],
+            ['User events','→','GA4 custom events','→','Funnel & conversion tracking'],
+          ]
+        }
+      ],
+      table: {
+        headers: ['Layer','Technology','Purpose'],
+        rows: [
+          ['Frontend','Next.js + TypeScript','SSR/SSG pages, practice quiz UI'],
+          ['Styling','Tailwind CSS','Utility-first responsive design'],
+          ['Hosting','Vercel','Edge deployment, CI/CD from GitHub'],
+          ['AI','Anthropic API','Per-question answer explanations'],
+          ['Payments','Stripe Checkout + Webhooks','Purchase flow and access control'],
+          ['Analytics','GA4','Custom event tracking and funnel analysis'],
+        ]
+      }
+    }
   }
 ];
 
@@ -1450,7 +1507,7 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 // CARD SWAP
 // ═══════════════════════════════════════
 let currentCard=0;
-let cardTimer=setInterval(()=>goCard((currentCard+1)%5),4500);
+let cardTimer=setInterval(()=>goCard((currentCard+1)%6),4500);
 
 function goCard(idx){
   const cards=document.querySelectorAll('.swap-card');
@@ -1459,18 +1516,18 @@ function goCard(idx){
   currentCard=idx;
   cards.forEach((c,i)=>{
     c.classList.remove('active');
-    const offset=(i-idx+5)%5;
-    c.style.zIndex=4-offset;
+    const offset=(i-idx+6)%6;
+    c.style.zIndex=5-offset;
     c.style.left=(offset*36)+'px';
     c.style.top=(offset*24)+'px';
     c.style.transform=`rotate(${(Math.random()-.5)*2}deg) scale(${1-offset*.03})`;
-    c.style.opacity=offset>3?'0.15':offset>2?'0.35':(1-offset*.1);
+    c.style.opacity=offset>4?'0.15':offset>3?'0.35':(1-offset*.1);
   });
   cards[idx].classList.add('active');
   pips.forEach((d,i)=>d.classList.toggle('active',i===idx));
   const counter=document.getElementById('cardCounter');
-  if(counter){ const next=(idx+1)%4+1; counter.textContent=String(next).padStart(2,'0')+' / 05'; }
-  cardTimer=setInterval(()=>goCard((currentCard+1)%5),4500);
+  if(counter){ const next=(idx+1)%6+1; counter.textContent=String(next).padStart(2,'0')+' / 06'; }
+  cardTimer=setInterval(()=>goCard((currentCard+1)%6),4500);
 }
 goCard(0);
 </script>
