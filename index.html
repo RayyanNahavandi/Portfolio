@@ -225,11 +225,11 @@ nav{
 
 /* CONTACT */
 #contact{padding:100px 48px;background:rgba(13,17,23,0.6);border-top:1px solid var(--border);}
-.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.contact-headline{font-size:clamp(36px,5vw,64px);font-weight:800;line-height:1;letter-spacing:-.02em;margin-bottom:24px;}
-.contact-headline .glitch{color:var(--accent);}
-.contact-desc{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:36px;}
-.contact-links{display:flex;flex-direction:column;gap:14px;}
+.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start;}
+.contact-eyebrow{font-family:var(--mono);font-size:11px;color:var(--accent2);letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;}
+.contact-title{font-family:var(--sans);font-size:clamp(28px,3.5vw,44px);font-weight:800;letter-spacing:-.02em;margin-bottom:20px;line-height:1.1;}
+.contact-desc{font-size:14px;color:var(--muted);line-height:1.75;}
+.contact-links{display:flex;flex-direction:column;gap:12px;}
 .contact-link{display:flex;align-items:center;gap:16px;padding:18px 22px;background:rgba(8,11,16,.7);border:1px solid var(--border);text-decoration:none;color:var(--text);transition:all .2s;backdrop-filter:blur(4px);}
 .contact-link:hover{border-color:var(--accent);background:rgba(0,212,255,.04);transform:translateX(4px);}
 .contact-link-icon{font-family:var(--mono);font-size:13px;width:28px;flex-shrink:0;color:var(--muted);}
@@ -238,8 +238,8 @@ nav{
 
 footer{padding:22px 48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2;background:rgba(8,11,16,.5);}
 footer p{font-family:var(--dm);font-size:11px;color:var(--muted);letter-spacing:.08em;}
-.footer-status{display:flex;align-items:center;gap:8px;font-family:var(--dm);font-size:11px;color:var(--green);}
-.footer-status::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 2s infinite;}
+.footer-status{display:flex;align-items:center;gap:8px;font-family:var(--dm);font-size:11px;color:var(--muted);}
+.footer-status::before{content:'';width:5px;height:5px;background:var(--accent2);border-radius:50%;flex-shrink:0;}
 
 .reveal{opacity:0;transform:translateY(24px);transition:all .6s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
@@ -377,7 +377,7 @@ footer p{font-family:var(--dm);font-size:11px;color:var(--muted);letter-spacing:
   nav{padding:16px 24px;}
   .nav-links{gap:20px;}
   #skills,#experience,#contact{padding:80px 24px;}
-  .contact-inner{grid-template-columns:1fr;gap:40px;}
+  .contact-inner{grid-template-columns:1fr;gap:48px;}
   .lab-grid{grid-template-columns:1fr;}
   footer{padding:18px 24px;flex-direction:column;gap:8px;}
   .modal{width:96vw;max-height:92vh;}
@@ -419,7 +419,7 @@ footer p{font-family:var(--dm);font-size:11px;color:var(--muted);letter-spacing:
 <!-- HERO -->
 <section id="hero">
   <div class="hero-left reveal">
-    <div class="hero-tag">Available for opportunities</div>
+    <div class="hero-tag">The MITRE Corporation · McLean, VA</div>
     <div class="hero-name">
       <div class="first">Rayyan</div>
       <div class="last">Nahavandi</div>
@@ -657,10 +657,10 @@ footer p{font-family:var(--dm);font-size:11px;color:var(--muted);letter-spacing:
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
-    <div class="reveal">
-      <div class="contact-headline">Let's build<br><span class="glitch">something</span><br>together.</div>
-      <p class="contact-desc">AI Engineer at The MITRE Corporation. Always interested in connecting with other engineers and collaborating on interesting projects. U.S. citizen, Dean's list, B.S. IT — GMU 2026.</p>
-      <a href="mailto:rnahavan@gmu.edu" class="btn-primary">Send a Message</a>
+    <div class="contact-header reveal">
+      <div class="contact-eyebrow">// 05 — Contact</div>
+      <h2 class="contact-title">Get in Touch</h2>
+      <p class="contact-desc">AI Engineer, Associate at The MITRE Corporation. B.S. Information Technology — George Mason University, Class of 2026. U.S. citizen.</p>
     </div>
     <div class="contact-links reveal">
       <a href="mailto:rnahavan@gmu.edu" class="contact-link"><div class="contact-link-icon">@</div><div class="contact-link-info"><div class="contact-link-label">Email</div><div class="contact-link-value">rnahavan@gmu.edu</div></div></a>
@@ -673,7 +673,7 @@ footer p{font-family:var(--dm);font-size:11px;color:var(--muted);letter-spacing:
 
 <footer>
   <p>© 2026 Rayyan Nahavandi — Built from scratch</p>
-  <div class="footer-status">AI Engineer @ The MITRE Corporation</div>
+  <div class="footer-status">AI Engineer, Associate · The MITRE Corporation</div>
 </footer>
 
 <script>
